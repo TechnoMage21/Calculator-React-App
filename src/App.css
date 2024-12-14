@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Jersey 10', sans-serif;
+  background-color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.cal-body {
+  background: #a9b479;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+}
+.cal-body h4{
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.results {
+  display: block;
+  justify-content: space-between;
+  height: 63px;
+  background: #0000002e;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.results h6{
+  text-align: right;
+}
+.button-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+
+.key-button {
+  background: #2b070d;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  height: 60px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.key-button:hover {
+  background: #3e0b12;
+}
+
+.equal {
+  background-color: orange !important;
+  border: 2px solid black !important;
+  color: black !important;
+}
+
+.backspace {
+  background-color: black !important;
+}
+
+.backspace img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 768px) {
+  .cal-body {
+    padding: 10px;
+  }
+
+  .results {
+    font-size: 1rem;
+    height: 63px;
+  }
+
+  .key-button {
+    font-size: 1rem;
+    height: 50px;
+  }
+}
