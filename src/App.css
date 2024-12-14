@@ -7,7 +7,20 @@ body, html {
   justify-content: center;
   align-items: center;
   font-family: 'Jersey 10', sans-serif;
-  background-color: white;
+  background: linear-gradient(45deg, #ff6f61, #ffb347); /* Smooth gradient background */
+  animation: backgroundShift 6s infinite alternate;
+}
+
+@keyframes backgroundShift {
+  0% {
+    background: linear-gradient(45deg, #ff6f61, #ffb347);
+  }
+  50% {
+    background: linear-gradient(45deg, #4e6c50, #a9b479);
+  }
+  100% {
+    background: linear-gradient(45deg, #ff6f61, #ffb347);
+  }
 }
 
 .container {
@@ -19,82 +32,165 @@ body, html {
 }
 
 .cal-body {
-  background: #a9b479;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
+  background: var(--cal-body-bg, #a9b479); /* Dynamic body background color */
+  padding: 30px; /* Reduced padding */
+  border-radius: 15px; /* Slightly rounded corners */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  max-width: 320px; /* Smaller max-width */
   width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
 }
-.cal-body h4{
+
+.cal-body:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  background: var(--cal-body-bg-hover, #b4c078); /* Hover effect with dynamic color */
+}
+
+.cal-body h4 {
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: bold;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+  margin-bottom: 25px; /* Reduced margin */
+  animation: fadeInText 1s ease-out;
 }
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .results {
   display: block;
   justify-content: space-between;
-  height: 63px;
+  height: 50px; /* Reduced height */
   background: #0000002e;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+  padding: 8px 15px; /* Reduced padding */
+  border-radius: 10px;
+  margin-bottom: 15px; /* Reduced margin */
+  font-size: 1rem; /* Slightly smaller font size */
   font-weight: bold;
+  transition: background 0.3s ease;
 }
-.results h6{
+
+.results:hover {
+  background: rgba(0, 0, 0, 0.4); /* Darker background on hover */
+}
+
+.results h6 {
   text-align: right;
+  color: #fff;
+  transition: color 0.3s ease;
 }
+
+.results h6:hover {
+  color: #ffb347; /* Change text color on hover */
+}
+
 .button-div {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 13px;
+  gap: 10px; /* Reduced gap between buttons */
 }
 
 .key-button {
   background: #2b070d;
   color: white;
   font-weight: bold;
-  font-size: 1.2rem;
-  height: 60px;
+  font-size: 1.1rem; /* Smaller font size */
+  height: 50px; /* Smaller button height */
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.key-button:active {
+  transform: scale(0.95); /* Button shrink effect when clicked */
 }
 
 .key-button:hover {
   background: #3e0b12;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .equal {
-  background-color: orange !important;
-  border: 2px solid black !important;
-  color: black !important;
+  background-color: #f77f00 !important; /* Orange background for equal button */
+  border: 2px solid #ff9f00 !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(255, 159, 0, 0.4);
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.equal:hover {
+  background-color: #ff9f00 !important;
+  transform: scale(1.05);
+}
+
+.equal:active {
+  background-color: #f77f00 !important;
+  transform: scale(0.95);
 }
 
 .backspace {
-  background-color: black !important;
+  background-color: #000000 !important;
+  color: #fff !important;
+  transition: background-color 0.3s ease;
+}
+
+.backspace:hover {
+  background-color: #333;
 }
 
 .backspace img {
-  width: 30px;
-  height: 30px;
+  width: 28px; /* Reduced icon size */
+  height: 28px; /* Reduced icon size */
+  transition: transform 0.2s ease;
 }
 
+.backspace:hover img {
+  transform: rotate(90deg); /* Rotate backspace icon on hover */
+}
+
+/* Responsive design adjustments */
 @media (max-width: 768px) {
   .cal-body {
-    padding: 10px;
+    padding: 20px; /* Reduced padding */
   }
 
   .results {
     font-size: 1rem;
-    height: 63px;
+    height: 50px; /* Smaller result box */
   }
 
   .key-button {
     font-size: 1rem;
-    height: 50px;
+    height: 45px; /* Reduced height for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .cal-body {
+    padding: 15px; /* Further reduced padding */
+    max-width: 280px; /* Even smaller width for mobile */
+  }
+
+  .results {
+    font-size: 1.1rem; /* Adjust result font size */
+    height: 45px; /* Even smaller result box */
+  }
+
+  .key-button {
+    font-size: 1rem;
+    height: 45px; /* Smaller buttons */
   }
 }
